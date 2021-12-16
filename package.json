@@ -1,0 +1,8 @@
+{
+	"name": "WelcomeMessage",
+	"author": "KittehKun",
+	"version": "1.0.0",
+	"akiVersion": "2.1.2",
+	"license": "Public Domain",
+	"main": "package.js"
+}
