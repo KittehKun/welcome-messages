@@ -3,8 +3,10 @@
 
 //This mod will welcome back the player upon starting the SPT-AKI server
 const modName = "KittehKun-Messages";
-const config = require("../config/messages.json");
-const LOCALES = DatabaseServer.tables.locales.global.en.interface //Accesses the interface property of the locales.json file on the server
+const config_en = require("../config/messages.json");
+const config_rus = require("../config/messages_rus.json");
+const LOCALES_EN = DatabaseServer.tables.locales.global.en.interface; //Accesses the interface property of the locales.json file on the server [ENGLISH]
+const LOCALES_RUS = DatabaseServer.tables.locales.global.ru.interface;
 
 class WelcomeMessage{
 	
@@ -26,9 +28,12 @@ class WelcomeMessage{
 	
 	//Method will display message in SPT-AKI console
 	static displayMessage(){
-		let maxNumber = config.Messages.length; //Variable to get the count of all messages
-		let randomNumber = getRandomInt(maxNumber);
-		let message = config.Messages[randomNumber];
+		let maxNumberEn = config_en.Messages.length; //Variable to get the count of all messages
+		let maxNumberRu = config_rus.Messages.length;
+		let randomNumberEn = getRandomInt(maxNumberEn);
+		let randomNumberRu = getRandomInt(maxNumberRu);
+		let message_en = config_en.Messages[randomNumberEn];
+		let message_ru = config_rus.Messages[randomNumberRu];
 		
 		//Method that returns a random integer depending on the maximum number inputed
 		function getRandomInt(max){
@@ -36,10 +41,12 @@ class WelcomeMessage{
 		}
 		
 		var textBase = "Attention! This is a Beta version of Escape from Tarkov for testing purposes."
-        LOCALES[textBase] = "Message of the Day!"; //Credit to @BΔLIST0N' for helping me with this line <3 | Acts as the title card for the orange box
+        LOCALES_EN[textBase] = "Message of the Day!"; //Credit to @BΔLIST0N' for helping me with this line <3 | Acts as the title card for the orange box
+		LOCALES_RUS[textBase] = "Message of the Day!";
 		
 		var messageBodyBase = "NDA free warning";
-		LOCALES[messageBodyBase] = message; //Acts as the message body for the orange box
+		LOCALES_EN[messageBodyBase] = message_en; //Acts as the message body for the orange box
+		LOCALES_RUS[messageBodyBase] = message_ru;
 		
 	}
 	
